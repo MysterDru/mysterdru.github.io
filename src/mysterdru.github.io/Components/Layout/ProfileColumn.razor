@@ -1,0 +1,11 @@
+<div class="profile-column">
+    <Profile>
+        @ChildContent
+    </Profile>
+</div>
+
+@code {
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+}

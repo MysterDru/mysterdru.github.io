@@ -1,0 +1,772 @@
+@import "../../Styles/variables";
+@import "../../Styles/mixins";
+
+$section-spacing: 30px;
+
+.profile {
+  font-family: "Proxima Nova", Tahoma, Helvetica, Verdana, sans-serif;
+  line-height: 1.5;
+  padding: 10px;
+  box-sizing: border-box;
+  min-width: 320px;
+  position: relative;
+
+  &.nested {
+    overflow: hidden;
+  }
+
+  &.preview {
+    user-select: none;
+    pointer-events: none;
+  }
+
+  // default styles for every section inside profile-content
+  .profile-content {
+    box-sizing: border-box;
+    color: #333333;
+    z-index: 1;
+
+    .head {
+      box-sizing: border-box;
+    }
+
+    .body {
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      > * {
+        width: 100%;
+      }
+    }
+
+    .body-content {
+      padding: 0px;
+      padding-top: 30px;
+      padding-bottom: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .inset {
+      box-sizing: border-box;
+      padding: 0 20px;
+      max-width: 440px;
+      width: 100%;
+    }
+
+    section + section:not(:empty) {
+      margin-top: $section-spacing;
+    }
+
+    .name-headline {
+      section + section:not(:empty) {
+        margin-top: 5px;
+      }
+    }
+
+    .image {
+      background-color: #eee;
+    }
+
+    .name {
+      font-size: 20px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: bold;
+      margin: 0;
+      color: #333;
+    }
+
+    .headline {
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: bold;
+      margin: 0;
+
+      .role {
+        // text-transform not working the first word of inline elements
+        display: inline-block;
+        text-transform: capitalize;
+      }
+    }
+
+    // spotlight button styles.
+    // - ensures user's color shows unaltered in resting state.
+    // - ensures a good hover effect on every color.
+    .spotlight {
+
+      .button {
+        // ensure button fills container width
+        // using min-width to prevent truncation in large template
+        min-width: 100%;
+        transition: all 150ms ease-out;
+
+        &.light {
+          color: #333;
+          // transparent box-shadow so transition on hover works
+          box-shadow: inset 0px 0px 0px 100px rgba(0, 0, 0, 0.025);
+
+          .no-touchevents &:hover {
+            box-shadow: inset 0px 0px 0px 100px rgba(0, 0, 0, 0.05);
+            border-color: rgba(0, 0, 0, 0.23);
+          }
+        }
+
+        &.dark {
+          color: #fff;
+          box-shadow: inset 0px 0px 0px 100px rgba(255, 255, 255, 0);
+
+          .no-touchevents &:hover {
+            box-shadow: inset 0px 0px 0px 100px rgba(255, 255, 255, 0.1);
+          }
+        }
+
+        .text.ellipsis {
+          // the most allowable on mobile before it starts breaking
+          // also matches ~20 char limit with 'ask me about...'
+          max-width: 244px;
+
+          // scoot it to the right to make it be centered after adding glyph
+          margin-right: -27px;
+        }
+
+        &::before {
+          font-size: 24px;
+          width: 24px;
+          margin-right: 10px;
+          top: 2px;
+          margin-left: -30px;
+        }
+      }
+    }
+
+    .bio {
+      @include bio-text();
+    }
+
+    @media only screen and (max-width: 430px) {
+      .bio {
+        max-width: 100%;
+      }
+    }
+
+    .social-links {
+      max-width: 470px;
+
+      // when editing items, animate them into view
+      li.editing {
+        animation: bloop 300ms cubic-bezier(0.25, 1.5, 0.5, 3) 300ms 1;
+      }
+
+      li {
+        padding: 0;
+        margin: 12.5px;
+        width: 36px;
+        height: 36px;
+        font-size: 30px;
+        line-height: 36px;
+        cursor: pointer;
+        display: block;
+        -webkit-font-smoothing: antialiased;
+        color: #999;
+
+        svg {
+          fill: #999;
+          height: 100%;
+          width: 100%;
+        }
+
+        &.contact-me {
+          border: 2px solid;
+          font-size: 20px;
+          border-radius: 50%;
+          box-sizing: border-box;
+          text-align: center;
+
+          svg {
+            width: 20px;
+            height: auto;
+          }
+        }
+
+        .no-touchevents & {
+          opacity: 1;
+          transition: opacity 150ms ease-in-out;
+          will-change: opacity;
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
+    }
+
+    .meta-header {
+      font-size: 12px;
+      text-transform: uppercase;
+      font-weight: 200;
+      letter-spacing: 2px;
+      color: #999;
+      margin-bottom: 5px;
+    }
+
+    ::deep ul.inline {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    ul.meta-sections {
+      font-size: 14px;
+      display: flex;
+      justify-content: center;
+
+      .meta-item {
+        display: block;
+      }
+
+      .meta-item + .meta-item {
+        margin-top: 0.25em;
+      }
+
+      @include not-mobile() {
+        flex-direction: row;
+
+        /* this rule only applies when there are 2 or more meta sections */
+        .meta-section:nth-last-child(n+2),
+        .meta-section:nth-last-child(n+2) ~ .meta-section {
+          width: 50%;
+          box-sizing: border-box;
+          padding: 0 5px;
+        }
+      }
+
+      @include is-mobile() {
+        flex-direction: column;
+
+        .meta-section {
+          width: 100%;
+        }
+
+        .meta-section + .meta-section {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    .testimonials {
+      word-wrap: break-word;
+
+      .testimonial {
+        text-align: left;
+        padding-left: 30px;
+        margin-left: -30px;
+        position: relative;
+        font-size: 14px;
+
+        &::before {
+          position: absolute;
+          left: 0;
+          top: -5px;
+          font-size: 24px;
+          opacity: 0.5;
+          width: 24px; // prevent left edge of quotes from getting clipped
+        }
+
+        .quote {
+          color: $gray;
+        }
+
+        .attribution {
+          color: #999;
+          margin-top: 3px;
+          font-weight: bold;
+          font-size: 12px;
+          line-height: 21px; // 14 x 1.5
+          text-transform: uppercase;
+        }
+      }
+
+      .testimonial + .testimonial {
+        margin-top: 15px;
+      }
+    }
+
+    .contact-me-form {
+      form {
+        margin-top: 10px;
+      }
+
+      fieldset {
+        margin: 0;
+      }
+
+      fieldset + fieldset {
+        margin-top: 7px;
+      }
+
+      textarea {
+        resize: none;
+      }
+
+      ::placeholder {
+        color: #ccc;
+      }
+
+      .message-info {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+        align-content: flex-start;
+        line-height: 1.2;
+      }
+
+      .can-respond {
+        font-size: 12px;
+        margin-right: 20px;
+        text-align: left;
+        margin-bottom: 5px;
+      }
+
+      label.maxlength {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &.small {
+    @include flex-center();
+
+    padding-top: $padding-below-nav;
+    padding-bottom: $padding-below-nav;
+
+    &.has-footer-logo { // delete this if 20230206_less_branding fails
+      padding-bottom: 60px;
+    }
+
+    &.has-nav {
+      padding-top: $nav-height + $padding-below-nav;
+    }
+
+    &.has-ledge {
+      padding-bottom: $nav-height + $padding-below-nav;
+    }
+
+    .profile-content {
+      width: 620px;
+      max-width: calc(100vw - 10px);
+      text-align: center;
+      background-color: #ffffff;
+      border-radius: 4px;
+      margin-top: 60px; // to compensate for image vertical offset
+    }
+
+    .head {
+      .image {
+        box-shadow: inset 0 0 10px 0 rgba(0, 0, 0, 0.2),
+        0 0 2px 0 rgba(0, 0, 0, 0.1);
+        border-radius: 50%;
+        margin: 0 auto;
+        margin-top: -60px;
+        margin-bottom: 20px;
+        width: 120px;
+        height: 120px;
+      }
+    }
+
+    .name-headline {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  &.medium {
+    @include not-mobile() {
+      padding-top: $padding-below-nav;
+      padding-bottom: $padding-below-nav;
+      &.has-footer-logo { // delete this if 20230206_less_branding fails
+        padding-bottom: 60px;
+      }
+
+      &.has-nav {
+        padding-top: $nav-height + $padding-below-nav;
+      }
+
+      &.has-ledge {
+        padding-bottom: $nav-height + $padding-below-nav;
+      }
+    }
+
+    @include is-mobile() {
+      // match left and right margins
+      $medium-padding: 10px;
+
+      padding-top: $medium-padding;
+      padding-bottom: $medium-padding;
+      &.has-footer-logo { // delete this if 20230206_less_branding fails
+        padding-bottom: 60px;
+      }
+
+      &.has-nav {
+        padding-top: $nav-height + $medium-padding;
+      }
+
+      &.has-ledge {
+        padding-bottom: $nav-height + $medium-padding;
+      }
+    }
+
+    .profile-content {
+      width: 620px;
+      max-width: calc(100vw - 10px);
+      text-align: center;
+    }
+
+    .head {
+      overflow: hidden;
+      position: relative;
+      border-top-left-radius: 4px;
+      border-top-right-radius: 4px;
+
+      .image {
+        // using alpha bgcolor instead of #eee to prevent corner halos
+        // cf. https://github.com/aboutdotme/main/issues/3376
+        background-color: rgba(255, 255, 255, 0.1);
+        box-shadow: inset 0 -130px 200px -50px rgba(0, 0, 0, 0.5);
+      }
+
+      .name-headline {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        position: absolute;
+        box-sizing: border-box;
+        padding: 20px;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+
+        .name {
+          color: #ffffff;
+        }
+
+        .headline {
+          color: #ffffff;
+        }
+      }
+
+    }
+
+    .body {
+      background-color: #ffffff;
+      border-bottom-left-radius: 4px;
+      border-bottom-right-radius: 4px;
+    }
+  }
+
+  //&.large {
+  //  padding: 0;
+  //
+  //  &.has-nav {
+  //    padding-top: $nav-height;
+  //  }
+  //
+  //  background-color: #fff;
+  //
+  //  // ================================
+  //  // large narrow version
+  //
+  //  // large narrow mixin. uses parens so it's not included in the output
+  //  .large_narrow_mixin
+  //
+  //() {
+  //  @include flex-force-fill();
+  //
+  //  .profile-content {
+  //    width: 100%;
+  //    text-align: center;
+  //    display: flex;
+  //    flex-direction: column;
+  //    justify-content: stretch;
+  //  }
+  //
+  //  .head {
+  //    position: relative;
+  //    // image respects image aspect ratio. at some odd window sizes
+  //    // this can cause the name/headline to be rendered below the
+  //    // fold. setting max-height and overflow on .head ensures that
+  //    // image area stops short of fold so name and headline are
+  //    // visible
+  //    max-height: 66.6667vh;
+  //    overflow: hidden;
+  //
+  //    .image {
+  //      box-sizing: border-box;
+  //    }
+  //
+  //    .name-headline {
+  //      display: flex;
+  //      flex-direction: column;
+  //      justify-content: flex-end;
+  //      position: absolute;
+  //      box-sizing: border-box;
+  //      padding: 20px;
+  //      width: 100%;
+  //      left: 0;
+  //      top: 0;
+  //      right: 0;
+  //      bottom: 0;
+  //      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+  //      box-shadow: inset 0 -130px 200px -50px rgba(0, 0, 0, 0.5);
+  //
+  //      .name {
+  //        color: #ffffff;
+  //      }
+  //
+  //      .headline {
+  //        color: #ffffff;
+  //      }
+  //    }
+  //  }
+  //
+  //  .body {
+  //    padding: 0;
+  //    box-sizing: border-box;
+  //    flex-grow: 1;
+  //    flex-shrink: 1;
+  //
+  //    display: flex;
+  //    flex-direction: column;
+  //    justify-content: space-between;
+  //    align-items: center;
+  //
+  //    .body-content {
+  //      padding-top: 0;
+  //      padding-bottom: $nav-height;
+  //
+  //      .has-ledge & {
+  //        padding-bottom: $nav-height + $padding-below-nav;
+  //      }
+  //    }
+  //
+  //    .body-top {
+  //      display: none;
+  //    }
+  //
+  //    .body-bottom {
+  //      width: 100%;
+  //      position: sticky;
+  //      bottom: 0;
+  //    }
+  //
+  //    .name-headline {
+  //      display: none;
+  //    }
+  //
+  //    ul.meta-sections {
+  //      flex-direction: column;
+  //
+  //      .meta-section {
+  //        padding: 0;
+  //        width: 100%;
+  //      }
+  //
+  //      .meta-section + .meta-section {
+  //        margin-top: 20px;
+  //      }
+  //    }
+  //  }
+  //
+  //}
+  //
+  //  // apply large narrow mixin to @media query
+  //  //@media (max-width: 800px) {
+  //  //  // don't apply these rules to opposing element query
+  //  //  &:not([min-width-801="true"]) {
+  //  //    .large_narrow_mixin
+  //  //  }
+  //  //}
+  //  // apply large narrow mixin to @element query
+  //  //&[max-width-800="true"] {
+  //  //  .large_narrow_mixin
+  //  //}
+  //
+  //
+  //  //  // ================================
+  //  //  // large wide version
+  //  //
+  //  //  // large wide mixin. uses parens so it's not included in the output
+  //  //  .large_wide_mixin
+  //  //
+  //  //() {
+  //  //  @include flex-force-fill();
+  //  //
+  //  //  .profile-content {
+  //  //    width: 100%;
+  //  //    display: flex;
+  //  //    flex-direction: row;
+  //  //    flex-wrap: nowrap;
+  //  //    align-items: stretch;
+  //  //
+  //  //    .head {
+  //  //      width: 66.6667%;
+  //  //      flex-grow: 1;
+  //  //      flex-shrink: 1;
+  //  //
+  //  //      .image {
+  //  //        background-color: #eee;
+  //  //
+  //  //        // to prevent image from scrolling when profile
+  //  //        // content is longer than the window
+  //  //        position: fixed;
+  //  //        width: inherit;
+  //  //        // above works for the server-render. when client
+  //  //        // renders, an element query is applied which
+  //  //        // manages setting the width in pixels, which is
+  //  //        // needed when edit panel opens
+  //  //
+  //  //        min-height: 100%;
+  //  //        padding-bottom: 0 !important;
+  //  //        // ^ important, because we have to override
+  //  //        // paddingBottom which is calculated in JS
+  //  //
+  //  //      }
+  //  //
+  //  //      .name-headline {
+  //  //        display: none;
+  //  //      }
+  //  //    }
+  //  //
+  //  //    .body {
+  //  //      padding: 0;
+  //  //      width: 33.3333%;
+  //  //      box-sizing: border-box;
+  //  //      flex-grow: 1;
+  //  //      flex-shrink: 1;
+  //  //      text-align: left;
+  //  //
+  //  //      display: flex;
+  //  //      flex-direction: column;
+  //  //      justify-content: space-between;
+  //  //      align-items: stretch;
+  //  //
+  //  //      .body-content {
+  //  //        padding-top: $nav-height;
+  //  //        padding-bottom: $nav-height;
+  //  //
+  //  //        .has-ledge & {
+  //  //          padding-bottom: $nav-height + $padding-below-nav;
+  //  //        }
+  //  //      }
+  //  //
+  //  //      .body-top {
+  //  //        position: sticky;
+  //  //        top: $nav-height;
+  //  //      }
+  //  //
+  //  //      .body-bottom {
+  //  //        position: sticky;
+  //  //        bottom: 0;
+  //  //      }
+  //  //
+  //  //    }
+  //  //
+  //  //    .inset {
+  //  //      padding: 0 60px;
+  //  //      max-width: 520px;
+  //  //    }
+  //  //
+  //  //    .headline {
+  //  //      // override default nowrap rules for roles and location
+  //  //      .roles,
+  //  //      .location {
+  //  //        white-space: normal;
+  //  //      }
+  //  //    }
+  //  //
+  //  //    .portfolio {
+  //  //      .portfolio-thumbs {
+  //  //        justify-content: flex-start;
+  //  //      }
+  //  //    }
+  //  //
+  //  //    .bio {
+  //  //      &.short-bio {
+  //  //        text-align: left;
+  //  //      }
+  //  //    }
+  //  //
+  //  //    .social-links {
+  //  //      ul.inline {
+  //  //        justify-content: flex-start;
+  //  //        margin-left: -25px;
+  //  //      }
+  //  //
+  //  //      li {
+  //  //        margin: 0;
+  //  //        margin-left: 25px;
+  //  //        margin-bottom: 25px;
+  //  //      }
+  //  //    }
+  //  //
+  //  //    ul.meta-sections {
+  //  //      flex-direction: column;
+  //  //      justify-content: flex-start;
+  //  //
+  //  //      .meta-section:nth-last-child(n+2),
+  //  //      .meta-section:nth-last-child(n+2) ~ .meta-section {
+  //  //        padding: 0;
+  //  //        width: 100%;
+  //  //      }
+  //  //
+  //  //      .meta-section:nth-last-child(n+2) ~ .meta-section {
+  //  //        padding: 0px;
+  //  //        margin-top: 20px;
+  //  //      }
+  //  //    }
+  //  //  }
+  //  //
+  //  //  &.nested {
+  //  //    .profile-content {
+  //  //      .head {
+  //  //        .image {
+  //  //          // for large wide nested profiles, the image is 2/3
+  //  //          // the width. setting padding bottom to the same
+  //  //          // ratio yields the square image we want
+  //  //          min-height: 0;
+  //  //          position: absolute;
+  //  //          top: 0;
+  //  //          bottom: 0;
+  //  //          left: 0;
+  //  //          right: 0;
+  //  //        }
+  //  //      }
+  //  //    }
+  //  //  }
+  //  //
+  //  //}
+  //  //
+  //  //  // apply large wide mixin to @media query
+  //  //  @media (min-width: 801px) {
+  //  //    // don't apply these rules to opposing element query
+  //  //    &:not([max-width-800="true"]) {
+  //  //      .large_wide_mixin
+  //  //    }
+  //  //  }
+  //  //  // apply large wide mixin to @element query
+  //  //  &[min-width-801="true"] {
+  //  //    .large_wide_mixin
+  //  //  }
+  //  //}
+  //}
+}

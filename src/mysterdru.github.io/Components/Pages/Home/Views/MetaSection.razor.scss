@@ -1,0 +1,48 @@
+@import "../../../../Styles/mixins";
+
+ul.meta-sections {
+    
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    
+    @include not-mobile {
+        flex-direction: row;
+    }
+
+    @include is-mobile {
+        flex-direction: column;
+        
+    }
+
+    .meta-section {
+        padding: 0;
+        width: 100%;
+    }
+    
+    @include not-mobile {
+        
+    }
+    
+    @include is-mobile {
+        .meta-section + .meta-section {
+            margin-top: 20px;
+        }
+    }
+
+    .meta-header {
+        color: #999;
+        font-size: 12px;
+        font-weight: 200;
+        letter-spacing: 2px;
+        margin-bottom: 5px;
+        text-transform: uppercase;
+    }
+    
+    .meta-item {
+        display: block;
+    }
+    
+    
+}
+

@@ -5,7 +5,35 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
+	<PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
 	<ItemGroup>
+		<PackageReference Include="AspNetCore.SassCompiler" Version="1.77.5" />
 		<PackageReference Include="BlazorStatic" Version="1.0.0-beta.4" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Content Update="Styles\reset.scss">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	  <Content Update="Styles\text.scss">
+	    <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+	    <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+	  </Content>
+	</ItemGroup>
+	<ItemGroup>
+	  <_ContentIncludedByDefault Remove="wwwroot\css\lib\buttons.css" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\lib\buttons.css.map" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\lib\columns.css" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\lib\columns.css.map" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\lib\general.css" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\lib\general.css.map" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\lib\reset.css" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\lib\reset.css.map" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\lib\text.css" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\mixins.css" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\mixins.css.map" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\variables.css" />
+	  <_ContentIncludedByDefault Remove="wwwroot\css\variables.css.map" />
 	</ItemGroup>
 </Project>

@@ -1,0 +1,116 @@
+p {
+  margin-bottom: 0.75em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+ul.bulleted {
+  padding-left: 1.3em;
+  list-style-type: disc;
+}
+
+ul.bulleted ul.bulleted {
+  list-style-type: circle;
+}
+
+ul.bulleted li {
+  margin: 0.75em 0;
+}
+
+ol.numbered {
+  padding-left: 1.3em;
+  list-style-type: decimal;
+}
+
+ol.numbered li {
+  margin: 0.75em 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 16px;
+  font-weight: normal;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.nowrap {
+  white-space: nowrap;
+}
+
+.text.small {
+  font-size: 12px !important;
+}
+
+.text.italic {
+  font-style: italic;
+}
+
+.text.bold {
+  font-weight: bold;
+}
+
+.text.capitalize {
+  text-transform: capitalize;
+}
+
+.text.underline {
+  text-decoration: underline;
+}
+
+.text.white-underline-hover {
+  display: inline-block;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+
+  .no-touchevents {
+    &:hover {
+      border-bottom: 1px solid rgba(255, 255, 255, 1);
+    }
+  }
+}
+
+.text.center {
+  text-align: center;
+}
+
+.text.white {
+  color: #ffffff;
+}
+
+.text.black {
+  color: #000000;
+}
+
+.text.gray {
+  color: #999999;
+}
+
+.text.yellow {
+  color: #ffcc33;
+}
+
+.no-touchevents a.text.yellow:hover {
+  color: #FFE7A2;
+}
+
+/* text ellipsis */
+.text.ellipsis {
+  vertical-align: bottom;
+  white-space: nowrap;
+  overflow-x: hidden;
+  /* constrain to width of parent by default
+   local instances can override this width as needed */
+  max-width: 100%;
+  display: inline-block;
+  text-overflow: ellipsis;
+}
+
+.text.break-all {
+  word-break: break-all;
+}

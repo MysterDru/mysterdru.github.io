@@ -1,0 +1,205 @@
+@import "../variables";
+@import "../mixins";
+
+.button {
+  display: inline-block;
+  text-align: center;
+  border-radius: 5px;
+  cursor: pointer;
+  box-sizing: border-box;
+  white-space: nowrap;
+  user-select: none;
+  &:focus {
+    @include fade ($blue, 40%, outline-color);
+  }
+
+  // default to medium size
+  font-size: 14px;
+  line-height: 28px;
+  padding: 0 15px;
+
+  // default colors are .button.light,
+  // but the .light class is assumed, not required
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: $gray;
+  .no-touchevents &:hover {
+    @include tint($gray, 97.5%, background-color);
+    border-color: #999;
+    color: #000;
+  }
+}
+
+// DOM node-specific overrides
+button.button {
+  font-family: inherit;
+}
+// needed for firefox
+button.button::-moz-focus-inner {
+  border: 0;
+  padding: 0;
+}
+a.button {
+  text-decoration: none !important;
+}
+
+// size variations
+.button.xlarge {
+  font-size: 18px;
+  line-height: 48px;
+  padding: 0 30px;
+}
+.button.large {
+  font-size: 16px;
+  line-height: 38px;
+  padding: 0 20px;
+}
+.button.small {
+  font-size: 12px;
+  line-height: 24px;
+  padding: 0 12px;
+}
+.button.xsmall {
+  font-size: 10px;
+  line-height: 18px;
+  padding: 0 9px;
+}
+
+// disabled buttons
+.button[disabled] {
+  cursor: default;
+  pointer-events: none; // so we don't have to wrap :hover rules with :not([disabled])
+  opacity: 0.4;
+  &.dark {
+    opacity: 0.2;
+  }
+}
+
+// luminance variations
+.button.light {
+  background-color: #fff;
+  color: $blue;
+  border-color: $blue;
+  .no-touchevents &:hover {
+    @include tint($blue, 92.5%, background-color);
+    color: $blue_effect;
+    border-color: $blue_effect;
+  }
+
+  // light ranks
+
+  // slightly thicker border for light.primary
+  &.primary {
+    box-shadow: inset 0 0 0 0.75px $blue;
+  }
+  // light danger button variant, not in currenlty use
+  // commented out to avoid bundle bloat
+  // &.danger {
+  //     color: @error_text_on_white;
+  //     border-color: @error_text_on_white;
+  //     box-shadow: inset 0 0 0 0.75px @error_text_on_white;
+  // }
+
+  // no changes for secondary
+  // &.secondary {}
+
+  // tertiary buttons have transparent backgrounds
+  // and are borderless until hovered
+  &.tertiary {
+    color: fade($gray, 50%);
+    background-color: transparent;
+    border-color: transparent;
+    .no-touchevents &:hover {
+      color: $gray;
+      border-color: fade($gray, 30%);
+      background-color: transparent;
+    }
+  }
+  // .quaternary is always rendered over darker background
+  &.quaternary {
+    @include fade($gray, 90%, color);
+    color: fade($gray, 90%);
+    border-color: transparent;
+    .no-touchevents &:hover {
+      border-color: transparent;
+      color: $gray;
+      @include fade($gray, 90%, background-color);
+    }
+  }
+}
+
+.button.dark {
+  color: #fff;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+  .no-touchevents &:hover {
+    color: #fff;
+  }
+
+  // ranks
+  &.primary {
+    background-color: $blue;
+    border-color: $blue;
+    .no-touchevents &:hover {
+      background-color: $blue_effect;
+      border-color: $blue_effect;
+    }
+  }
+  &.secondary {
+    // think we should use lighter gray than $gray for these
+    // cuz dark.primary shouldn't be lighter than these
+    background-color: #666;
+    border-color: #666;
+    .no-touchevents &:hover {
+      background-color: #555;
+      border-color: #555;
+    }
+  }
+  &.tertiary {
+    @include fade(#fff, 70%, color);
+    background-color: transparent;
+    border-color: transparent;
+    box-shadow: none; // don't want to inherit this
+    .no-touchevents &:hover {
+      color: #fff;
+      background-color: transparent;
+      @include fade(#fff, 70%, border-color);
+    }
+  }
+}
+
+// button groups
+.buttons {
+  line-height: 30px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+
+  &.large {
+    line-height: 40px;
+  }
+  &.small {
+    line-height: 25px;
+  }
+
+  .button {
+    margin-right: 15px;
+    margin-bottom: 10px;
+  }
+  .button.small {
+    margin-right: 8px;
+  }
+  .button:last-child {
+    margin-right: 0px;
+  }
+
+  &.center {
+    justify-content: center;
+    .button {
+      margin-top: 0;
+      margin-left: 8px;
+      margin-right: 8px;
+      margin-bottom: 10px;
+    }
+  }
+}

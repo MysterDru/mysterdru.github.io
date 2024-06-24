@@ -12,6 +12,10 @@ builder.Services.AddBlazorStaticService(opt =>
 	opt.OutputFolderPath = "../../docs";
 });
 
+#if DEBUG
+builder.Services.AddSassCompiler();
+#endif
+
 // Add services to the container.
 builder.Services.AddRazorComponents();
 

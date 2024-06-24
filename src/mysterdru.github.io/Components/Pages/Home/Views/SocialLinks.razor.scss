@@ -1,0 +1,35 @@
+@import "../../../../Styles/mixins";
+
+.social-links {
+  @include flex-force-fill;
+
+  ul.inline {
+    
+    justify-content: flex-start;
+    margin-left: -25px;
+  }
+  
+  li {
+    opacity: 1;
+    -webkit-transition: opacity .15s ease-in-out;
+    transition: opacity .15s ease-in-out;
+    will-change: opacity;
+
+    padding: 0;
+    margin: 12.5px;
+    width: 36px;
+    height: 36px;
+    font-size: 30px;
+    line-height: 36px;
+    cursor: pointer;
+    display: block;
+    -webkit-font-smoothing: antialiased;
+    color: #999;
+  }
+  
+  .social-link {
+    i {
+      color: #999;
+    }
+  }
+}

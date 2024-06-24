@@ -1,0 +1,26 @@
+@import "../../Styles/mixins";
+
+.page-container {
+  height: 100%;
+  overflow: visible;;
+  width: 100%;
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  // fill height of window by default
+  // this allows pages to use flex rules to pin their children at top and bottom
+  min-height: 100vh;
+
+  &.profile-scope {
+
+    main {
+      padding-top: 0;
+
+      //@include flex-force-fill;
+      @include flex-center;
+    }
+  }
+}
+

@@ -1,0 +1,11 @@
+<div class="profile small has-ledge" max-width-640="false">
+    <div class="profile-content">
+        @ChildContent
+    </div>
+</div>
+
+@code {
+
+    [Parameter] public RenderFragment ChildContent { get; set; }
+
+}

@@ -1,0 +1,7 @@
+@import "../../Styles/mixins";
+
+.profile-column {
+  width: 100%;
+
+  @include flex-force-fill;
+}

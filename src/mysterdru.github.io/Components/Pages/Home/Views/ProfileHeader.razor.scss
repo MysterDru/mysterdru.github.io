@@ -1,0 +1,34 @@
+.head {
+  box-sizing: border-box;
+
+  .image {
+    margin: -60px auto 20px;
+    background-color: #eee;
+  }
+
+  .name-headline {
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    .name {
+      color: #333;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      line-height: 1.2;
+      margin: 0;
+      text-transform: uppercase; 
+    }
+
+    section+section:not(:empty) {
+      margin-top: 5px;
+    }
+
+    .headline {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0;
+    }
+  }
+}
