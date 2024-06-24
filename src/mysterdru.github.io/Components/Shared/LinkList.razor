@@ -1,11 +1,15 @@
 @if (Items is {Count: > 0})
 {
-    <ul class="inline">
+    <ul class="@Classes">
         @foreach (var item in Items)
         {
             <li>
                 <a class="item-link" title="@item.Title" href="@item.Link" target="_blank">
                     <i class="@item.Icon" style="color: #999"></i>
+                    @if (ShowTitle)
+                    {
+                        <span class="item-title"> @item.Title</span>
+                    }
                 </a>
             </li>
         }
@@ -16,4 +20,11 @@
 
     [Parameter] public List<(string Title, string Icon, string Link)> Items { get; set; }
 
+    [Parameter]
+    public bool Inline { get; set; }
+    
+    [Parameter]
+    public bool ShowTitle { get; set; }
+
+    private string Classes => Inline ? "inline" : string.Empty;
 }

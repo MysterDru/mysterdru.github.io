@@ -10,6 +10,11 @@ builder.Services.AddBlazorStaticService(opt =>
 {
 	opt.IgnoredPathsOnContentCopy.Add("app.css"); //pre-build version for tailwind
 	opt.OutputFolderPath = "../../docs";
+
+	
+	opt.PagesToGenerate.Add(new($"/", "index.html"));
+	opt.PagesToGenerate.Add(new($"/sessions", "sessions/index.html"));
+	opt.PagesToGenerate.Add(new($"/sessions/kcdc-2024", "sessions/kcdc-2024/index.html"));
 });
 
 #if DEBUG

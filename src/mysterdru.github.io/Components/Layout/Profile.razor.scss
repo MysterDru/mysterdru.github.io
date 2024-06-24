@@ -349,18 +349,6 @@ $section-spacing: 30px;
     padding-top: $padding-below-nav;
     padding-bottom: $padding-below-nav;
 
-    &.has-footer-logo { // delete this if 20230206_less_branding fails
-      padding-bottom: 60px;
-    }
-
-    &.has-nav {
-      padding-top: $nav-height + $padding-below-nav;
-    }
-
-    &.has-ledge {
-      padding-bottom: $nav-height + $padding-below-nav;
-    }
-
     .profile-content {
       width: 620px;
       max-width: calc(100vw - 10px);
