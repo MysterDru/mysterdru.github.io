@@ -1,0 +1,75 @@
+@page "/Sessions"
+@using mysterdru.github.io.Components.Pages.Home.Views
+@using mysterdru.github.io.Components.Shared
+
+<PageTitle>Drew Frisk - Sessions</PageTitle>
+<ProfileHeader Title="Sessions"/>
+
+<ProfileBody>
+    <section class="inset">
+        <hr/>
+        
+        <div class="row">
+            <div class="column">
+                <h2 class="session-title">Let's Generate Some Code! Getting Started with Roslyn Source Generators</h2>
+                
+                <h3 class="session-location">KCDC - 2024</h3>
+                
+                <LinkList
+                    Items="@([
+                               ("Slides", "fa-solid fa-file-powerpoint", ""),
+                               ("Repository", "fa-brands fa-square-github", "https://github.com/mysterdru")
+                           ])"
+                />
+                
+                <p>
+                    Roslyn Source Generators have been around since .NET 5. They are a powerful tool to help improve the efficiency of your development process but can be a daunting process to get started with.
+                    <br><br>
+                    In this ½ day workshop, we’ll dive into how source generators can elevate your workflow by reducing repetitiveness. We’ll build a source generator that can auto-create interface properties on a class; geared towards reducing the amount of code needed to be manually written for entities and DTOs.
+                    <br><br>
+                    Learn about the different approaches that can be taken when creating a source generator. Explore how to approach testing your generator and how to incorporate it into your projects with topics including but not limited to:
+                    <br><br>
+                    - Incremental source generators
+                    <br>
+                    - Unit Testing source generators
+                    <br>
+                    - Publishing source generators as a NuGet package
+                    <br>- Some of the common pitfalls encountered during development
+                    <br><br>
+                    We’ll also cover some of the resources you can use to ease into the process of getting started with source generators. If time, we’ll also discuss some other ways source generators can be used to reduce your overall code footprint.<br><br>This workshop will include some try it yourself elements with a more classroom like environment, so come prepared to write some code! We’ll work through some examples and use cases together.
+                </p>
+            </div>
+        </div>
+
+        @* <hr/> *@
+    </section>
+
+    <section class="inset">
+        <hr/>
+
+        <div class="row">
+            <div class="column">
+                <h2 class="session-title">Stop Copy Pasting Code! Use Source Generators Instead!</h2>
+
+                <h3 class="session-location">KCDC - 2024</h3>
+
+                <LinkList
+                    Items="@([
+                               ("Slides", "fa-solid fa-file-powerpoint", ""),
+                               ("Repository", "fa-brands fa-square-github", "https://github.com/mysterdru")
+                           ])"
+                />
+
+                <p>
+                    A majority of the code we write as software developers is controlling the flow of a data in and out of a database, usually via some kind of API layer. Over time this typically evolves into an N-Tier implementation and as we build, despite our best efforts to abstract and modularize, it is inevitable that we will copy and paste code… so let’s automate that code creation.
+                    <br><br>
+                    In this session we will explore how our development teams were able to take advantage of Roslyn Source Generators to automate the creation of our repeated implementation patterns, allowing us to generate 95% of our JSON API tier and a healthy amount of the underlying logic. This significantly improved our code maintainability, team velocities, and allowed us to deliver a predictable and consistent API design for our customer integrations.
+                    <br><br>
+                    At the end of this session you'll be able to walk away with some practical examples of using Source Generators to reduce your repeatable code.
+                </p>
+            </div>
+        </div>
+
+        <hr />
+    </section>
+</ProfileBody>

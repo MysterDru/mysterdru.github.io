@@ -1,19 +1,29 @@
+@using mysterdru.github.io.Components.Shared
 <section class="social-links inset">
-    <ul class="inline">
-        <li>
-            <a class="social-link" title="Visit me on GitHub" href="https://github.com/mysterdru" target="_blank" rel="me nofollow noopener noreferrer">
-                <i class="fa-brands fa-github" style="color: #999"></i>
-            </a>
-        </li>
-        <li>
-            <a class="social-link" title="Visit me on Stack Overflow" href="https://stackoverflow.com/users/1252744/drewfrisk" target="_blank" rel="me nofollow noopener noreferrer">
-                <i class="fa-brands fa-stack-overflow" style="color: #999"></i>
-            </a>
-        </li>
-        <li>
-            <a class="social-link" title="Visit me on LinkedIn" href="https://www.linkedin.com/in/drewfrisk" target="_blank" rel="me nofollow noopener noreferrer">
-                <i class="fa-brands fa-linkedin" style="color: #999"></i>
-            </a>
-        </li>
-    </ul>
+    
+    <LinkList
+        Items="@([
+                   ("Email me", "fa-solid fa-square-envelope", "mailto:hello@drewfrisk.com"),
+                   ("Find me on Github", "fa-brands fa-square-github", "https://github.com/mysterdru"),
+                   ("Find me on Linkedin", "fa-brands fa-linkedin", "https://www.linkedin.com/in/drewfrisk"),
+            ])"
+        />
+    
+    @* <ul class="inline"> *@
+    @*     <li> *@
+    @*         <a class="social-link" title="Email me" href="mailto:hello@drewfrisk.com" target="_blank" rel="me nofollow noopener noreferrer"> *@
+    @*             <i class="fa-solid fa-square-envelope" style="color: #999"></i> *@
+    @*         </a> *@
+    @*     </li> *@
+    @*     <li> *@
+    @*         <a class="social-link" title="Visit me on GitHub" href="https://github.com/mysterdru" target="_blank" rel="me nofollow noopener noreferrer"> *@
+    @*             <i class="fa-brands fa-square-github" style="color: #999"></i> *@
+    @*         </a> *@
+    @*     </li> *@
+    @*     <li> *@
+    @*         <a class="social-link" title="Visit me on LinkedIn" href="https://www.linkedin.com/in/drewfrisk" target="_blank" rel="me nofollow noopener noreferrer"> *@
+    @*             <i class="fa-brands fa-linkedin" style="color: #999"></i> *@
+    @*         </a> *@
+    @*     </li> *@
+    @* </ul> *@
 </section>

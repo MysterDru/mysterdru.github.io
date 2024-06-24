@@ -12,5 +12,15 @@
                 <span class="location"> in the <span class="location">Wisconsin NorthWoods</span></span>
             </h2>
         </section>
+        @if (!string.IsNullOrEmpty(Title))
+        {
+            <section>
+                <h1 class="page-title">@Title</h1>
+            </section>
+        }
     </div>
 </div>
+
+@code {
+    [Parameter] public string Title { get; set; }
+}

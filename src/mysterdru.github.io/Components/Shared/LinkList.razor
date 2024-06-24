@@ -1,0 +1,19 @@
+@if (Items is {Count: > 0})
+{
+    <ul class="inline">
+        @foreach (var item in Items)
+        {
+            <li>
+                <a class="item-link" title="@item.Title" href="@item.Link" target="_blank">
+                    <i class="@item.Icon" style="color: #999"></i>
+                </a>
+            </li>
+        }
+    </ul>
+}
+
+@code {
+
+    [Parameter] public List<(string Title, string Icon, string Link)> Items { get; set; }
+
+}
