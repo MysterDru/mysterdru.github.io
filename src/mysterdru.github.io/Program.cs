@@ -9,13 +9,13 @@ builder.WebHost.UseStaticWebAssets();
 
 builder.Services.AddBlazorStaticService(opt =>
 {
-    var root = "/_d";
+    var root = "_d";
 
-    opt.OutputFolderPath = $"../../docs/{root}";
+    opt.OutputFolderPath = $"../../docs/{root}/";
 
-    opt.PagesToGenerate.Add(new(root, $"/index.html"));
-    opt.PagesToGenerate.Add(new($"{root}/sessions", $"/sessions/index.html"));
-    opt.PagesToGenerate.Add(new($"{root}/sessions/kcdc-2024", $"/sessions/kcdc-2024/index.html"));
+    opt.PagesToGenerate.Add(new($"/{root}", $"index.html"));
+    opt.PagesToGenerate.Add(new($"/{root}/sessions", $"sessions/index.html"));
+    opt.PagesToGenerate.Add(new($"/{root}/sessions/kcdc-2024", $"sessions/kcdc-2024/index.html"));
 });
 
 #if DEBUG
