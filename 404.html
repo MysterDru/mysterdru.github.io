@@ -14,8 +14,12 @@
             "https://drewfrisk.dev/sessions/kcdc-2024": "https://drewfrisk.dev/dist/sessions/kcdc-2024",
         };
 
-        // Get the current URL
-        const currentUrl = window.location.href;
+        function removeTrailingSlash(url) {
+            return url.endsWith('/') ? url.slice(0, -1) : url;
+        }
+
+        // Get the current URL and remove trailing slash if present
+        const currentUrl = removeTrailingSlash(window.location.href);
 
         // Check if the current URL is in the urlMap
         if (urlMap[currentUrl]) {
