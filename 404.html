@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Single Page Apps for GitHub Pages</title>
+    <script type="text/javascript">
+        // Simple 404 redirect page for nested/hosted static sites in GitHub Pages
+        // MIT License       
+
+        // Define a mapping of old URLs to new URLs
+        const urlMap = {
+            "https://drewfrisk.dev": "https://drewfrisk.dev/dist",
+            "https://drewfrisk.dev/sessions": "https://drewfrisk.dev/dist/sessions",
+            "https://drewfrisk.dev/sessions/kcdc-2024": "https://drewfrisk.dev/dist/sessions/kcdc-2024",
+        };
+
+        // Get the current URL
+        const currentUrl = window.location.href;
+
+        // Check if the current URL is in the urlMap
+        if (urlMap[currentUrl]) {
+            // Redirect to the new URL
+            window.location.href = urlMap[currentUrl];
+        } else {
+            // Redirect to the 404 page if the current URL is not found in the map
+            window.location.href = "/dist/404";
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

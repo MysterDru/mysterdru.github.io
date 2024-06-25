@@ -14,6 +14,7 @@ builder.Services.AddBlazorStaticService(opt =>
     opt.OutputFolderPath = $"../../{root}/";
 
     opt.PagesToGenerate.Add(new($"/{root}", $"index.html"));
+    opt.PagesToGenerate.Add(new($"/{root}/404", $"404/index.html"));
     opt.PagesToGenerate.Add(new($"/{root}/sessions", $"sessions/index.html"));
     opt.PagesToGenerate.Add(new($"/{root}/sessions/kcdc-2024", $"sessions/kcdc-2024/index.html"));
 });
