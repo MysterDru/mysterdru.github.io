@@ -4,7 +4,7 @@
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 
-		<StaticWebAssetBasePath>_d/$(PackageId)</StaticWebAssetBasePath>
+		<StaticWebAssetBasePath>dist/$(PackageId)</StaticWebAssetBasePath>
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.SassCompiler" Version="1.77.5" />

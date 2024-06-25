@@ -9,9 +9,9 @@ builder.WebHost.UseStaticWebAssets();
 
 builder.Services.AddBlazorStaticService(opt =>
 {
-    var root = "_d";
+    var root = "dist";
 
-    opt.OutputFolderPath = $"../../docs/{root}/";
+    opt.OutputFolderPath = $"../../{root}/";
 
     opt.PagesToGenerate.Add(new($"/{root}", $"index.html"));
     opt.PagesToGenerate.Add(new($"/{root}/sessions", $"sessions/index.html"));
@@ -35,15 +35,15 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// this is only used for debugging, and not the static site generator. static assets will be published to /_d
+// this is only used for debugging, and not the static site generator. static assets will be published to /dist
 // directory, but that path is not easily setup for the scoped asset file or the site index page when debugging locally in the IDD
-app.MapRedirect("/", "/_d");
-app.MapRedirect("/_d/mysterdru.github.io.styles.css", "/mysterdru.github.io.styles.css");
-app.MapRedirect("/_d/scripts.js", "/scripts.js");
-app.MapRedirect("/_d/images/profile.png", "/images/profile.png");
-app.MapRedirect("/_d/css/app.css", "/css/app.css");
-app.MapRedirect("/_d/css/lib/styles.css", "/css/lib/styles.css");
-app.MapRedirect("/_d/css/lib/styles.css.map", "/css/lib/styles.css.map");
+app.MapRedirect("/", "/dist");
+app.MapRedirect("/dist/mysterdru.github.io.styles.css", "/mysterdru.github.io.styles.css");
+app.MapRedirect("/dist/scripts.js", "/scripts.js");
+app.MapRedirect("/dist/images/profile.png", "/images/profile.png");
+app.MapRedirect("/dist/css/app.css", "/css/app.css");
+app.MapRedirect("/dist/css/lib/styles.css", "/css/lib/styles.css");
+app.MapRedirect("/dist/css/lib/styles.css.map", "/css/lib/styles.css.map");
 
 
 app.UseHttpsRedirection();
