@@ -1,5 +1,13 @@
 <div class="head">
     <div class="image" style="width:120px;height:120px;background-image:url(profile.png);background-size:cover;border-radius:50%;background-repeat:no-repeat;background-position:center center"></div>
+    @if (ShowHome)
+    {
+        <div class="home">
+            <a title="Home" href="/" target="_self" class="button xlarge">
+                <i class="fa-solid fa-house" style="color:black;"></i>
+            </a>
+        </div>
+    }
     <div class="name-headline">
         <section>
             <h1 class="name">Drew Frisk</h1>
@@ -22,5 +30,7 @@
 </div>
 
 @code {
+    [Parameter] public bool ShowHome { get; set; }
+
     [Parameter] public string Title { get; set; }
 }

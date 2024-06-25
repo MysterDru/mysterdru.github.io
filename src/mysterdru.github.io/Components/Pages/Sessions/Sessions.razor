@@ -1,10 +1,9 @@
 @page "/Sessions"
 @page "/Sessions/{Category}"
-@using mysterdru.github.io.Components.Pages.Home.Views
 @using mysterdru.github.io.Components.Shared
 
-<PageTitle>Drew Frisk - Sessions</PageTitle>
-<ProfileHeader Title="Sessions"/>
+<PageTitle>@GetPageTitle()</PageTitle>
+<ProfileHeader ShowHome="true" Title="Sessions"/>
 
 <ProfileBody>
     @if (string.IsNullOrEmpty(Category) || Category.ToLower() == "kcdc-2024")
@@ -21,8 +20,7 @@
                     <LinkList
                         Inline="false"
                         ShowTitle="true"
-                        Items="@( [("View Slides", "fa-solid fa-file-powerpoint", ""),
-                                   ("View Labs Repository", "fa-brands fa-square-github", "https://github.com/MysterDru/source-generator-workshop")])"/>
+                        Items="@( [("View Slides", "fa-solid fa-file-powerpoint", ""), ("View Labs Repository", "fa-brands fa-square-github", "https://github.com/MysterDru/source-generator-workshop")])"/>
 
                     <p>
                         Roslyn Source Generators have been around since .NET 5. They are a powerful tool to help improve the efficiency of your development process but can be a daunting process to get started with.
@@ -59,8 +57,7 @@
                     <LinkList
                         Inline="false"
                         ShowTitle="true"
-                        Items="@( [("View Slides", "fa-solid fa-file-powerpoint", ""),
-                                   ("View Demo Repository", "fa-brands fa-square-github", "https://github.com/MysterDru/api-source-generator-session")])"/>
+                        Items="@( [("View Slides", "fa-solid fa-file-powerpoint", ""), ("View Demo Repository", "fa-brands fa-square-github", "https://github.com/MysterDru/api-source-generator-session")])"/>
 
                     <p>
                         A majority of the code we write as software developers is controlling the flow of a data in and out of a database, usually via some kind of API layer. Over time this typically evolves into an N-Tier implementation and as we build, despite our best efforts to abstract and modularize, it is inevitable that we will copy and paste code… so let’s automate that code creation.
@@ -79,6 +76,14 @@
 
 @code {
 
-    [Parameter] public string Category { get; set; }
+    [Parameter] public string? Category { get; set; }
+
+    private string GetPageTitle() => $"Drew Frisk - Sessions | {GetCategoryDisplayName()}";
+
+    private string GetCategoryDisplayName() => Category?.ToLower() switch
+    {
+        "kcdc-2024" => "KCDC 2024",
+        _ => "All"
+    };
 
 }

@@ -5,6 +5,23 @@
     margin: -60px auto 20px;
     background-color: #eee;
   }
+  
+  .home {
+    position: relative;
+    top: -80px;
+    float: left;
+    left: 15px;
+    
+    .button {
+      border: none;
+      padding: 0;
+      background: none;
+    }
+    
+    i {
+      color: black;
+    }
+  }
 
   .name-headline {
     padding-left: 20px;
