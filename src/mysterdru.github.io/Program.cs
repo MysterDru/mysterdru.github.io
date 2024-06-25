@@ -13,9 +13,9 @@ builder.Services.AddBlazorStaticService(opt =>
 
     opt.OutputFolderPath = $"../../docs/{root}";
 
-    opt.PagesToGenerate.Add(new(root, "index.html"));
-    opt.PagesToGenerate.Add(new($"{root}/sessions", "sessions/index.html"));
-    opt.PagesToGenerate.Add(new($"{root}/sessions/kcdc-2024", "sessions/kcdc-2024/index.html"));
+    opt.PagesToGenerate.Add(new(root, $"/{root}/index.html"));
+    opt.PagesToGenerate.Add(new($"{root}/sessions", $"{root}/sessions/index.html"));
+    opt.PagesToGenerate.Add(new($"{root}/sessions/kcdc-2024", $"{root}/sessions/kcdc-2024/index.html"));
 });
 
 #if DEBUG
@@ -37,8 +37,14 @@ if (!app.Environment.IsDevelopment())
 
 // this is only used for debugging, and not the static site generator. static assets will be published to /_d
 // directory, but that path is not easily setup for the scoped asset file or the site index page when debugging locally in the IDD
-app.MapRedirect("/_d/mysterdru.github.io.styles.css", "/mysterdru.github.io.styles.css");
 app.MapRedirect("/", "/_d");
+app.MapRedirect("/_d/mysterdru.github.io.styles.css", "/mysterdru.github.io.styles.css");
+app.MapRedirect("/_d/scripts.js", "/scripts.js");
+app.MapRedirect("/_d/images/profile.png", "/images/profile.png");
+app.MapRedirect("/_d/css/app.css", "/css/app.css");
+app.MapRedirect("/_d/css/lib/styles.css", "/css/lib/styles.css");
+app.MapRedirect("/_d/css/lib/styles.css.map", "/css/lib/styles.css.map");
+
 
 app.UseHttpsRedirection();
 
