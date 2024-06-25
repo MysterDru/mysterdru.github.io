@@ -3,10 +3,9 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
-	</PropertyGroup>
 
-	<PropertyGroup Condition=" '$(RunConfiguration)' == 'https' " />
-	<PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
+		<StaticWebAssetBasePath>_d/$(PackageId)</StaticWebAssetBasePath>
+	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.SassCompiler" Version="1.77.5" />
 		<PackageReference Include="BlazorStatic" Version="1.0.0-beta.4" />
@@ -35,5 +34,10 @@
 	  <_ContentIncludedByDefault Remove="wwwroot\css\mixins.css.map" />
 	  <_ContentIncludedByDefault Remove="wwwroot\css\variables.css" />
 	  <_ContentIncludedByDefault Remove="wwwroot\css\variables.css.map" />
+	  <_ContentIncludedByDefault Remove="wwwroot\d\css\app.css" />
+	  <_ContentIncludedByDefault Remove="wwwroot\d\css\lib\styles.css" />
+	  <_ContentIncludedByDefault Remove="wwwroot\d\css\lib\styles.css.map" />
+	  <_ContentIncludedByDefault Remove="wwwroot\d\profile.png" />
+	  <_ContentIncludedByDefault Remove="wwwroot\d\scripts.js" />
 	</ItemGroup>
 </Project>
