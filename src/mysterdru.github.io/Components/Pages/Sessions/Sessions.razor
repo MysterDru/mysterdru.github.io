@@ -20,7 +20,10 @@
                     <LinkList
                         Inline="false"
                         ShowTitle="true"
-                        Items="@( [("View Slides", "fa-solid fa-file-powerpoint", ""), ("View Labs Repository", "fa-brands fa-square-github", "https://github.com/MysterDru/source-generator-workshop")])"/>
+                        Items="@([
+                                   ("View Slides", "fa-solid fa-file-powerpoint", "https://docs.google.com/presentation/d/1XhbkUJe938NtbvBRaS5MEfhjY3R32Nxi/edit?usp=sharing&ouid=104316881087242497829&rtpof=true&sd=true"), 
+                                    ("View Labs Repository", "fa-brands fa-square-github", "https://github.com/MysterDru/source-generator-workshop")
+                               ])"/>
 
                     <p>
                         Roslyn Source Generators have been around since .NET 5. They are a powerful tool to help improve the efficiency of your development process but can be a daunting process to get started with.
@@ -42,7 +45,6 @@
                 </div>
             </div>
 
-            @* <hr/> *@
         </section>
 
         <section class="inset">
@@ -57,7 +59,10 @@
                     <LinkList
                         Inline="false"
                         ShowTitle="true"
-                        Items="@( [("View Slides", "fa-solid fa-file-powerpoint", ""), ("View Demo Repository", "fa-brands fa-square-github", "https://github.com/MysterDru/api-source-generator-session")])"/>
+                        Items="@( [
+                                   ("View Slides", "fa-solid fa-file-powerpoint", "https://docs.google.com/presentation/d/1vmUcLtAR6j7MNlZueb3jxf30A6YmkRJy/edit?usp=sharing&ouid=104316881087242497829&rtpof=true&sd=true"), 
+                                   ("View Demo Repository", "fa-brands fa-square-github", "https://github.com/MysterDru/api-source-generator-session")]
+                               )"/>
 
                     <p>
                         A majority of the code we write as software developers is controlling the flow of a data in and out of a database, usually via some kind of API layer. Over time this typically evolves into an N-Tier implementation and as we build, despite our best efforts to abstract and modularize, it is inevitable that we will copy and paste code… so let’s automate that code creation.
