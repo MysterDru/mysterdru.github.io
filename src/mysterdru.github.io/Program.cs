@@ -4,7 +4,6 @@ using mysterdru.github.io.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
 builder.WebHost.UseStaticWebAssets();
 
 builder.Services.AddBlazorStaticService(opt =>
@@ -17,6 +16,7 @@ builder.Services.AddBlazorStaticService(opt =>
     opt.PagesToGenerate.Add(new($"/{root}/404", $"404/index.html"));
     opt.PagesToGenerate.Add(new($"/{root}/sessions", $"sessions/index.html"));
     opt.PagesToGenerate.Add(new($"/{root}/sessions/kcdc-2024", $"sessions/kcdc-2024/index.html"));
+    opt.PagesToGenerate.Add(new($"/{root}/apps/emergency-deck/privacy", $"apps/emergency-deck/privacy.html"));
 });
 
 #if DEBUG
